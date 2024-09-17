@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.example.lab_week_04.ListFragment"
-        android:label="fragment_list"
+        android:label="Coffee List"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
@@ -16,16 +16,16 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.lab_week_04.DetailFragment"
-        android:label="fragment_detail"
+        android:label="Coffee Detail"
         tools:layout="@layout/fragment_detail" />
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.lab_week_04.FavoritesFragment"
-        android:label="fragment_favorites"
+        android:label="Favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/cafeFragment"
         android:name="com.example.lab_week_04.CafeFragment"
-        android:label="fragment_cafe"
+        android:label="Cafe List"
         tools:layout="@layout/fragment_cafe" />
 </navigation>

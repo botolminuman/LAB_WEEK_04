@@ -21,18 +21,18 @@ class CafeAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle, privat
     override fun createFragment(position: Int): Fragment {
         val (content, title, description) = when (position) {
             0 -> Triple(
-                listOf("Caramel Macchiato", "Frappuccino", "Mocha", "Latte", "Espresso").joinToString("\n"),
-                "Starbucks",
+                context.getString(R.string.starbucks_content),
+                context.getString(R.string.starbucks_title),
                 context.getString(R.string.starbucks_desc)
             )
             1 -> Triple(
-                listOf("Milk Coffee", "Gula Aren Coffee", "Cappuccino", "Matcha Latte", "Black Coffee").joinToString("\n"),
-                "Janji Jiwa",
+                context.getString(R.string.janjijiwa_content),
+                context.getString(R.string.janjijiwa_title),
                 context.getString(R.string.janjijiwa_desc)
             )
             2 -> Triple(
-                listOf("Kopi Kenangan Mantan", "Kopi LDR", "Kopi Soekarno", "Es Teh Manis", "Es Cokelat").joinToString("\n"),
-                "Kopi Kenangan",
+                context.getString(R.string.kopikenangan_content),
+                context.getString(R.string.kopikenangan_title),
                 context.getString(R.string.kopikenangan_desc)
             )
             else -> Triple("", "", "")
