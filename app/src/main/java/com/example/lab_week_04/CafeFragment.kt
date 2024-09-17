@@ -31,3 +31,5 @@ class CafeFragment : Fragment() {
         }.attach()
     }
 }
+
+//TEST
