@@ -28,20 +28,4 @@
         android:name="com.example.lab_week_04.CafeFragment"
         android:label="fragment_cafe"
         tools:layout="@layout/fragment_cafe" />
-    <fragment
-        android:id="@+id/cafeDetailFragment"
-        android:name="com.example.lab_week_04.CafeDetailFragment"
-        android:label="fragment_cafe_detail"
-        tools:layout="@layout/fragment_cafe_detail">
-        <action
-            android:id="@+id/action_cafeDetailFragment_to_menuDetailFragment"
-            app:destination="@id/menuDetailFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/menuDetailFragment"
-        android:name="com.example.lab_week_04.MenuDetailFragment"
-        android:label="fragment_menu_detail"
-        tools:layout="@layout/fragment_menu_detail" />
-
 </navigation>

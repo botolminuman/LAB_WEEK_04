@@ -12,18 +12,48 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Judul untuk daftar menu -->
+        <!-- TextView untuk judul -->
         <TextView
+            android:id="@+id/menu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- TextView untuk deskripsi -->
+        <TextView
+            android:id="@+id/menu_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"/>
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="20dp"/>
 
+        <!-- Garis pembatas -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginVertical="20dp"
-            android:background="?android:attr/dividerVertical" />
+            android:background="?android:attr/dividerVertical"
+            android:layout_marginVertical="10dp"/>
+
+        <!-- TextView untuk label menu -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:text="Menu"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Container untuk item menu -->
+        <LinearLayout
+            android:id="@+id/menu_items_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
     </LinearLayout>
 </ScrollView>

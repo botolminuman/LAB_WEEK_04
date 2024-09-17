@@ -27,45 +27,32 @@ class CafeDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_cafe_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val menuContainer = view.findViewById<LinearLayout>(R.id.menu_container)
+        val titleTextView = view.findViewById<TextView>(R.id.menu_title)
+        val descriptionTextView = view.findViewById<TextView>(R.id.menu_description)
+        val menuItemsContainer = view.findViewById<LinearLayout>(R.id.menu_items_container)
 
-        // Set title for the menu and ensure it is at the top
-        val titleTextView = TextView(context).apply {
-            text = title
-            textSize = 30f
-            setTextColor(ContextCompat.getColor(context!!, android.R.color.black))
-            setTypeface(null, android.graphics.Typeface.BOLD)
-        }
-        menuContainer.addView(titleTextView, 0)
+        // Setel teks untuk judul dan deskripsi
+        titleTextView.text = title
+        descriptionTextView.text = description
 
-        // Add description below the title
-        val descriptionTextView = TextView(context).apply {
-            text = description
-            textSize = 16f
-            setTextColor(ContextCompat.getColor(context!!, android.R.color.darker_gray))
-            setPadding(0, 10, 0, 20)
-        }
-        menuContainer.addView(descriptionTextView, 1)
+        // Pisahkan konten menjadi item menu individual
+        val menuItems = content?.split(", ") ?: emptyList()
 
-        // Split content into individual menu items
-        val menuItems = content?.split("\n") ?: emptyList()
-
-        // Add each menu item to the container
+        // Tambahkan setiap item menu ke dalam container
         menuItems.forEach { menuItem ->
             val textView = TextView(context).apply {
                 text = menuItem
                 textSize = 18f
-                setPadding(10, 20, 10, 20)
+                setPadding(0, 10, 0, 10)
                 setTextColor(ContextCompat.getColor(context!!, android.R.color.black))
             }
-            menuContainer.addView(textView)
+            menuItemsContainer.addView(textView)
         }
     }
 
