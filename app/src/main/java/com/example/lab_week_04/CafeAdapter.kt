@@ -33,3 +33,4 @@ class CafeAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
         return CafeDetailFragment.newInstance(content)
     }
 }
+
