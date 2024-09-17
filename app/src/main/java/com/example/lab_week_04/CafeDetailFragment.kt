@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-private const val TAB_CONTENT = "TAB_CONTENT"
-
 class CafeDetailFragment : Fragment() {
     private var content: String? = null
 
@@ -29,11 +27,11 @@ class CafeDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<TextView>(R.id.content_description)
-            ?.text = content
+        view.findViewById<TextView>(R.id.content_description)?.text = content
     }
 
     companion object {
+        private const val TAB_CONTENT = "TAB_CONTENT"
         fun newInstance(content: String) =
             CafeDetailFragment().apply {
                 arguments = Bundle().apply {
