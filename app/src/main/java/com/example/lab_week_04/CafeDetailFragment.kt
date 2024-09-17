@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
-
-private const val TAB_CONTENT = "TAB_CONTENT"
+import androidx.core.content.ContextCompat
 
 class CafeDetailFragment : Fragment() {
     private var content: String? = null
@@ -29,11 +29,27 @@ class CafeDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<TextView>(R.id.content_description)
-            ?.text = content
+
+        val menuContainer = view.findViewById<LinearLayout>(R.id.menu_container)
+
+        // Split content into individual menu items
+        val menuItems = content?.split("\n") ?: emptyList()
+
+        // Add each menu item to the container
+        menuItems.forEach { menuItem ->
+            val textView = TextView(context).apply {
+                text = menuItem
+                textSize = 18f
+                setPadding(10, 20, 10, 20)
+                setTextColor(ContextCompat.getColor(context!!, android.R.color.black))
+                setTypeface(null, android.graphics.Typeface.BOLD)
+            }
+            menuContainer.addView(textView)
+        }
     }
 
     companion object {
+        private const val TAB_CONTENT = "TAB_CONTENT"
         fun newInstance(content: String) =
             CafeDetailFragment().apply {
                 arguments = Bundle().apply {

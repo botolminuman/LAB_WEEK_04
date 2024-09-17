@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CafeDetailFragment"
-    android:padding="30dp">
-    <TextView
-        android:id="@+id/content_description"
+    android:padding="20dp">
+
+    <!-- Container untuk menampilkan daftar menu -->
+    <LinearLayout
+        android:id="@+id/menu_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="" />
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Judul untuk daftar menu -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:text="Cafe Menu"/>
+
+        <!-- Garis pemisah -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="20dp"
+            android:background="?android:attr/dividerVertical" />
+
+        <!-- Item menu akan ditambahkan secara dinamis dari kode Java/Kotlin -->
+
+    </LinearLayout>
+</ScrollView>
