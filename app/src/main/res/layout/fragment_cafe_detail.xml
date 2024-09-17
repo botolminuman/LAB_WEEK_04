@@ -18,8 +18,7 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:text="Cafe Menu"/>
+            android:textStyle="bold"/>
 
         <View
             android:layout_width="match_parent"

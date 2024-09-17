@@ -11,11 +11,15 @@ import androidx.core.content.ContextCompat
 
 class CafeDetailFragment : Fragment() {
     private var content: String? = null
+    private var title: String? = null
+    private var description: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             content = it.getString(TAB_CONTENT)
+            title = it.getString(TAB_TITLE)
+            description = it.getString(TAB_DESCRIPTION)
         }
     }
 
@@ -32,6 +36,24 @@ class CafeDetailFragment : Fragment() {
 
         val menuContainer = view.findViewById<LinearLayout>(R.id.menu_container)
 
+        // Set title for the menu and ensure it is at the top
+        val titleTextView = TextView(context).apply {
+            text = title
+            textSize = 30f
+            setTextColor(ContextCompat.getColor(context!!, android.R.color.black))
+            setTypeface(null, android.graphics.Typeface.BOLD)
+        }
+        menuContainer.addView(titleTextView, 0)
+
+        // Add description below the title
+        val descriptionTextView = TextView(context).apply {
+            text = description
+            textSize = 16f
+            setTextColor(ContextCompat.getColor(context!!, android.R.color.darker_gray))
+            setPadding(0, 10, 0, 20)
+        }
+        menuContainer.addView(descriptionTextView, 1)
+
         // Split content into individual menu items
         val menuItems = content?.split("\n") ?: emptyList()
 
@@ -42,7 +64,6 @@ class CafeDetailFragment : Fragment() {
                 textSize = 18f
                 setPadding(10, 20, 10, 20)
                 setTextColor(ContextCompat.getColor(context!!, android.R.color.black))
-                setTypeface(null, android.graphics.Typeface.BOLD)
             }
             menuContainer.addView(textView)
         }
@@ -50,10 +71,14 @@ class CafeDetailFragment : Fragment() {
 
     companion object {
         private const val TAB_CONTENT = "TAB_CONTENT"
-        fun newInstance(content: String) =
+        private const val TAB_TITLE = "TAB_TITLE"
+        private const val TAB_DESCRIPTION = "TAB_DESCRIPTION"
+        fun newInstance(content: String, title: String, description: String) =
             CafeDetailFragment().apply {
                 arguments = Bundle().apply {
                     putString(TAB_CONTENT, content)
+                    putString(TAB_TITLE, title)
+                    putString(TAB_DESCRIPTION, description)
                 }
             }
     }

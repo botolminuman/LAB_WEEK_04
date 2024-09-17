@@ -1,5 +1,6 @@
 package com.example.lab_week_04
 
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -11,26 +12,31 @@ val TABS_FIXED = listOf(
     R.string.kopikenangan_title,
 )
 
-val TABS_CONTENT = listOf(
-    R.string.starbucks_content,
-    R.string.janjijiwa_content,
-    R.string.kopikenangan_content
-)
-
-class CafeAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+class CafeAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle, private val context: Context) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
         return TABS_FIXED.size
     }
 
     override fun createFragment(position: Int): Fragment {
-        val content = when (position) {
-            0 -> listOf("Caramel Macchiato", "Frappuccino", "Mocha").joinToString("\n")
-            1 -> listOf("Milk Coffee", "Gula Aren Coffee", "Cappuccino").joinToString("\n")
-            2 -> listOf("Mocha Coffee", "Cappuccino", "Latte").joinToString("\n")
-            else -> ""
+        val (content, title, description) = when (position) {
+            0 -> Triple(
+                listOf("Caramel Macchiato", "Frappuccino", "Mocha", "Latte", "Espresso").joinToString("\n"),
+                "Starbucks Menu",
+                context.getString(R.string.starbucks_desc)
+            )
+            1 -> Triple(
+                listOf("Milk Coffee", "Gula Aren Coffee", "Cappuccino", "Matcha Latte", "Black Coffee").joinToString("\n"),
+                "Janji Jiwa Menu",
+                context.getString(R.string.janjijiwa_desc)
+            )
+            2 -> Triple(
+                listOf("Kopi Kenangan Mantan", "Kopi LDR", "Kopi Soekarno", "Es Teh Manis", "Es Cokelat").joinToString("\n"),
+                "Kopi Kenangan Menu",
+                context.getString(R.string.kopikenangan_desc)
+            )
+            else -> Triple("", "", "")
         }
-        return CafeDetailFragment.newInstance(content)
+        return CafeDetailFragment.newInstance(content, title, description)
     }
 }
-
